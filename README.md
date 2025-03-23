@@ -1,16 +1,16 @@
-# aurelio_portfolio
+# 🌐 Aurelio's Personal Web Portfolio
 
-A new Flutter project.
+Hi there! 👋 I'm Aurelio Hevi Alfons, and this is my personal portfolio — crafted with Flutter Web to reflect my creativity, skills, and growth.
 
-## Getting Started
+This space is more than just a webpage — it's a showcase of my university projects, freelance work, designs, and everything in between. Whether it's mobile development, UI/UX design, or digital media, you'll find a piece of me in every section.
 
-This project is a starting point for a Flutter application.
+Every detail, from the custom icons to the subtle animations, was thoughtfully designed to represent how I work and who I am.
 
-A few resources to get you started if this is your first Flutter project:
+--------------------------------------
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🧰 Built With
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Flutter](https://flutter.dev/) 💙
+- [`flutter_svg`](https://pub.dev/packages/flutter_svg) for beautiful vector icons
+- [`url_launcher`](https://pub.dev/packages/url_launcher) to connect my social profiles
+- Icons by [Flaticon - Icon Fonts](https://www.flaticon.com/icon-fonts-most-downloaded?brands=1&type=uicon) 🎯
