@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class DrawerMenu extends StatelessWidget {
-  const DrawerMenu({super.key});
+  final Map<String, GlobalKey> keys;
+  final void Function(GlobalKey key) onItemSelected;
+
+  const DrawerMenu({
+    super.key,
+    required this.keys,
+    required this.onItemSelected,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +47,8 @@ class DrawerMenu extends StatelessWidget {
         style: const TextStyle(color: Colors.white),
       ),
       onTap: () {
-        Navigator.pop(context);
-        // Add your route logic here
+        Navigator.pop(context); // close the drawer
+        onItemSelected(keys[title]!); // scroll to section
       },
     );
   }

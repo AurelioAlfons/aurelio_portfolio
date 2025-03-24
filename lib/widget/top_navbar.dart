@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class TopNavBar extends StatelessWidget {
-  const TopNavBar({super.key});
+  final Function(GlobalKey) onItemSelected;
+  final Map<String, GlobalKey> keys;
+
+  const TopNavBar({
+    super.key,
+    required this.onItemSelected,
+    required this.keys,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,22 +29,17 @@ class TopNavBar extends StatelessWidget {
           // Logo + Name
           Row(
             children: [
-              IconButton(
-                icon: SvgPicture.asset(
-                  'assets/icons/linkedin.svg',
-                  width: 40,
-                  height: 40,
-                  color: const Color.fromARGB(255, 255, 28, 62),
-                ),
-                onPressed: () {},
-              ),
               const SizedBox(width: 12),
-              const Text(
-                "Aurelio Hevi Alfons ⚡",
-                style: TextStyle(
+              GestureDetector(
+                onTap: () => onItemSelected(keys['Home']!),
+                child: const Text(
+                  "Aurelio Hevi Alfons ⚡",
+                  style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
-                    fontWeight: FontWeight.bold),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ],
           ),
@@ -53,11 +54,11 @@ class TopNavBar extends StatelessWidget {
                 )
               : Row(
                   children: [
-                    _navItem("Home"),
-                    _navItem("About"),
-                    _navItem("Resume"),
-                    _navItem("Blog"),
-                    _navItem("Contact"),
+                    _navItem("Home", () => onItemSelected(keys["Home"]!)),
+                    _navItem("About", () => onItemSelected(keys["About"]!)),
+                    _navItem("Resume", () => onItemSelected(keys["Resume"]!)),
+                    _navItem("Blog", () => onItemSelected(keys["Blog"]!)),
+                    _navItem("Contact", () => onItemSelected(keys["Contact"]!)),
                   ],
                 ),
         ],
@@ -65,11 +66,28 @@ class TopNavBar extends StatelessWidget {
     );
   }
 
-  Widget _navItem(String title) {
+  Widget _navItem(String title, VoidCallback onTap) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
-      child: Text(title,
-          style: const TextStyle(color: Colors.white, fontSize: 16)),
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          onTap: onTap,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+                decorationColor: Colors.transparent, // We'll animate this next
+                decorationThickness: 2,
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
